@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSS — 3Delta 3D Baskı</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--bg2:#f8f8f6;--or:#f97316;--or2:#ea580c;--ord:rgba(249,115,22,0.08);--org:rgba(249,115,22,0.2);--tx:#111;--tx2:#444;--mu:#888;--br:#e5e5e3;--br2:#d0d0cc;--hd:'Space Grotesk',sans-serif;--bd:'Inter',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font-family:var(--bd);font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+nav{background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--br);padding:0 48px;height:66px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}.logo-mark{width:32px;height:32px}
+.logo-name{font-family:var(--hd);font-size:18px;font-weight:700}.logo-name b{color:var(--or)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;color:var(--tx2);transition:color .2s}.nav-links a:hover{color:var(--or)}
+.btn-prim{font-size:14px;font-weight:600;padding:9px 20px;border-radius:8px;background:var(--or);color:#fff;border:none;cursor:pointer}.btn-prim:hover{background:var(--or2)}
+
+.page-hero{background:var(--bg2);border-bottom:1px solid var(--br);padding:56px 48px}
+.page-hero-in{max-width:800px;margin:0 auto}
+.ey{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--or);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.ey::before{content:'';width:20px;height:2px;background:var(--or)}
+h1{font-family:var(--hd);font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+.page-sub{font-size:15px;color:var(--tx2);max-width:500px;line-height:1.75}
+
+.content{max-width:800px;margin:0 auto;padding:56px 48px}
+.faq-group{margin-bottom:40px}
+.faq-group-title{font-family:var(--hd);font-size:16px;font-weight:700;color:var(--or);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.faq-group-title::after{content:'';flex:1;height:1px;background:var(--br)}
+.faq-item{border:1px solid var(--br);border-radius:10px;margin-bottom:8px;overflow:hidden}
+.faq-q{width:100%;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;font-size:15px;font-weight:600;color:var(--tx);background:none;border:none;cursor:pointer;text-align:left;gap:16px;transition:background .15s}
+.faq-q:hover{background:var(--bg2)}
+.faq-ic{color:var(--or);font-size:18px;flex-shrink:0;transition:transform .25s;font-weight:400}
+.faq-a{display:none;padding:0 20px 18px;font-size:14px;color:var(--tx2);line-height:1.8}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-ic{transform:rotate(45deg)}
+.faq-item.open{border-color:var(--org);background:var(--ord)}
+
+.contact-cta{background:var(--tx);border-radius:14px;padding:36px;text-align:center;margin-top:48px}
+.contact-cta h3{font-family:var(--hd);font-size:22px;font-weight:700;color:#fff;margin-bottom:8px}
+.contact-cta p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:18px}
+.contact-cta a{display:inline-block;padding:11px 24px;background:var(--or);color:#fff;border-radius:8px;font-size:14px;font-weight:600;transition:background .2s}
+.contact-cta a:hover{background:var(--or2)}
+
+footer{background:var(--bg2);border-top:1px solid var(--br);padding:28px 48px 20px}
+.fb2{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;max-width:800px;margin:0 auto}
+.fc2{font-size:12px;color:var(--mu)}
+.fsoc{display:flex;gap:8px}
+.fso{font-size:12px;font-weight:600;padding:6px 14px;border:1px solid var(--br2);color:var(--mu);border-radius:8px;transition:all .2s}.fso:hover{color:var(--or)}
+
+@media(max-width:760px){nav{padding:0 20px}.page-hero{padding:36px 20px}.content{padding:36px 20px}footer{padding:24px 20px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">
+    <svg class="logo-mark" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#f97316"/><path d="M16 4L27 10V22L16 28L5 22V10Z" stroke="white" stroke-width="1.8" stroke-linejoin="round" fill="none"/><circle cx="16" cy="16" r="2.5" fill="white"/></svg>
+    <span class="logo-name">3<b>Δ</b>DELTA</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#hizmetler">Hizmetler</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+    <li><a href="sss.html" style="color:var(--or)">SSS</a></li>
+    <li><a href="index.html#iletisim">İletişim</a></li>
+  </ul>
+  <button class="btn-prim" onclick="window.location='index.html'">Dosya Yükle →</button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-in">
+    <div class="ey">Yardım</div>
+    <h1>Sık Sorulan Sorular</h1>
+    <p class="page-sub">Aklındaki soruların cevapları burada. Bulamazsan @3deltamaker'a DM at.</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="faq-group">
+    <div class="faq-group-title">Sipariş & Süreç</div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Sipariş vermek için ne yapmam gerekiyor? <span class="faq-ic">+</span></button><div class="faq-a">İletişim formunu doldur veya Instagram'dan @3deltamaker'a DM at. Ürün açıklaması, adet ve varsa referans fotoğraf gönder. 24 saat içinde fiyat teklifi ve üretim süresi bilgisi iletilir. Onay verdikten sonra %50 ön ödeme ile üretim başlar.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Tasarım dosyam yoksa ne yapabilirim? <span class="faq-ic">+</span></button><div class="faq-a">Sorun değil. Ne istediğini açıklaman veya referans fotoğraf gönderemen yeterli. Basit tasarımlarda ek ücret alınmaz, karmaşık tasarımlar için ayrı fiyatlandırma yapılır. Mevcut STL dosyan varsa direkt baskıya geçebiliriz.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Hangi dosya formatlarını kabul ediyorsunuz? <span class="faq-ic">+</span></button><div class="faq-a">STL, STEP, OBJ, 3MF ve STP formatlarını kabul ediyoruz. Farklı formatlarda da yardımcı olabiliriz — dosyanı gönder, değerlendiririz.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Sipariş onayladıktan sonra değişiklik yapabilir miyim? <span class="faq-ic">+</span></button><div class="faq-a">Üretim başlamadan önce yapılan değişiklikler için ek ücret alınmaz. Üretim başladıktan sonra değişiklik talep edilirse durum değerlendirilir — iletişime geç.</div></div>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-group-title">Teslimat & Kargo</div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Teslimat süresi ne kadar? <span class="faq-ic">+</span></button><div class="faq-a">Stokta hazır ürünler 48 saat, özel sipariş 72 saat (3 iş günü), toptan siparişler 5-10 iş günü. Acil sipariş için ek ücretle öncelikli üretim imkânı mevcuttur.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Kargo ücreti nedir? <span class="faq-ic">+</span></button><div class="faq-a">500₺ ve üzeri siparişlerde kargo ücretsizdir. Altındaki siparişlerde standart kargo ücreti eklenir. Kargo ücreti teklif aşamasında bildirilir.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Yurt dışına gönderim yapıyor musunuz? <span class="faq-ic">+</span></button><div class="faq-a">Talep üzere yurt dışına gönderim yapılabilir. Uluslararası kargo ücreti ve süresi için önceden iletişime geç.</div></div>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-group-title">Malzeme & Kalite</div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Hangi malzemeler ve renkler mevcut? <span class="faq-ic">+</span></button><div class="faq-a">PLA, PETG, TPU (esnek), ABS ve reçine (SLA) malzemeleri mevcuttur. Siyah, beyaz, gri, kırmızı, mavi, yeşil, turuncu ve şeffaf stokta bulunur. Özel renk için RAL kodu paylaşabilirsin — temin süresi 3-5 gün eklenebilir.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Hangi malzemeyi seçmem gerektiğini bilmiyorum. <span class="faq-ic">+</span></button><div class="faq-a">Sorun değil — projeyi anlat, uygun malzemeyi öneririz. Genel kural: detay odaklı projeler için PLA, ısı ve darbe dayanımı için PETG, esnek ürünler için TPU, yüksek detaylı figürler için reçine.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Baskı kalitesi nasıl kontrol ediliyor? <span class="faq-ic">+</span></button><div class="faq-a">Her baskı üretim sonrası kalite kontrolden geçirilir. Boyutsal doğruluk, yüzey kalitesi ve yapısal bütünlük kontrol edilir. Onaylanınca fotoğraf sana iletilir, onay verdikten sonra kargoya verilir. Hasar veya uygunsuz ürün için ücretsiz yeniden üretim garantisi.</div></div>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-group-title">Ödeme & Fatura</div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Hangi ödeme yöntemlerini kabul ediyorsunuz? <span class="faq-ic">+</span></button><div class="faq-a">EFT / Havale, kredi kartı (taksit seçeneği mevcut). %50 ön ödeme ile üretim başlar, kalan ürün tesliminde ödenir.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Fatura kesiyor musunuz? <span class="faq-ic">+</span></button><div class="faq-a">Evet, e-fatura + irsaliye ile sevkiyat yapılır. KDV dahil veya hariç seçeneği mevcuttur. Kurumsal siparişler için özel fatura düzenlenir.</div></div>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-group-title">Toptan & Kurumsal</div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Toptan satış için minimum sipariş adedi nedir? <span class="faq-ic">+</span></button><div class="faq-a">Toptan fiyatlandırma minimum 10 adetten başlar. 10-49 adet %10, 50-99 adet %20, 100+ adet %30 indirim. 500+ adet için özel fiyat görüşmesi yapılır.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Özel marka veya logo baskısı yapıyor musunuz? <span class="faq-ic">+</span></button><div class="faq-a">Evet, ürün üzerine logo veya marka adı entegrasyonu yapılabilir. Dosya olarak veya açıklama ile talep edilebilir. Toptan siparişlerde tercih edilen bir seçenektir.</div></div>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-group-title">İçerik & Sponsorluk</div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)">Sponsorluk veya iş birliği için nasıl iletişime geçebilirim? <span class="faq-ic">+</span></button><div class="faq-a">Filament markası, ekipman distribütörü veya 3D baskı ile ilgili ürün/hizmet iş birliği için info@3delta.com.tr veya Instagram DM ile ulaşabilirsin. Ürün inceleme, affiliate ve içerik üretim anlaşmalarına açığız.</div></div>
+  </div>
+
+  <div class="contact-cta">
+    <h3>Cevabını bulamadın mı?</h3>
+    <p>@3deltamaker'a DM at veya iletişim formunu doldur — 24 saat içinde yanıtlayalım.</p>
+    <a href="index.html#iletisim">İletişime Geç →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="fb2">
+    <div class="fc2">© 2025 3DELTA · <a href="index.html" style="color:var(--or)">3delta.com.tr</a></div>
+    <div class="fsoc"><a href="https://instagram.com/3deltamaker" class="fso" target="_blank">IG</a><a href="https://tiktok.com/@3deltamaker" class="fso" target="_blank">TT</a><a href="https://youtube.com/@3deltamaker" class="fso" target="_blank">YT</a></div>
+  </div>
+</footer>
+<script>function tf(btn){const it=btn.parentElement,was=it.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!was)it.classList.add('open');}</script>
+</body>
+</html>
