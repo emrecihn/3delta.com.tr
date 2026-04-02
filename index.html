@@ -8,532 +8,506 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#ffffff;--bg2:#f8f8f6;--bg3:#f0efeb;
-  --or:#f97316;--or2:#ea580c;--ord:rgba(249,115,22,0.08);--org:rgba(249,115,22,0.2);
-  --tx:#111111;--tx2:#444444;--mu:#888888;
-  --br:#e5e5e3;--br2:#d0d0cc;
-  --hd:'Space Grotesk',sans-serif;--bd:'Inter',sans-serif;
-  --r:10px;
-}
+:root{--bg:#fff;--bg2:#f8f8f6;--bg3:#f0efeb;--or:#f97316;--or2:#ea580c;--ord:rgba(249,115,22,.08);--org:rgba(249,115,22,.2);--tx:#111;--tx2:#444;--mu:#888;--br:#e5e5e3;--br2:#d0d0cc;--hd:'Space Grotesk',sans-serif;--bd:'Inter',sans-serif;--r:10px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--tx);font-family:var(--bd);font-size:16px;line-height:1.6;overflow-x:hidden}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--or);border-radius:2px}
 a{color:inherit;text-decoration:none}
 
-/* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--br);padding:0 48px;height:66px;display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:10px}
-.logo-mark{width:32px;height:32px;flex-shrink:0}
-.logo-name{font-family:var(--hd);font-size:18px;font-weight:700;color:var(--tx)}
-.logo-name b{color:var(--or)}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{font-size:14px;font-weight:500;color:var(--tx2);transition:color .2s}
-.nav-links a:hover{color:var(--or)}
-.nav-r{display:flex;gap:10px;align-items:center}
-.btn-nav{font-size:14px;font-weight:600;padding:9px 20px;border-radius:8px;cursor:pointer;transition:all .2s;border:none}
-.btn-nav-out{background:transparent;color:var(--tx2);border:1.5px solid var(--br2)}
-.btn-nav-out:hover{border-color:var(--or);color:var(--or)}
-.btn-nav-prim{background:var(--or);color:#fff}
-.btn-nav-prim:hover{background:var(--or2)}
-.hbg{display:none;background:none;border:none;cursor:pointer;padding:4px}
-.hbg span{display:block;width:22px;height:2px;background:var(--tx);margin:5px 0}
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--br);padding:0 clamp(16px,4vw,48px);height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.lm{width:32px;height:32px;flex-shrink:0}
+.ln{font-family:var(--hd);font-size:18px;font-weight:700;color:var(--tx);white-space:nowrap}
+.ln b{color:var(--or)}
+.nl{display:flex;gap:24px;list-style:none}
+.nl a{font-size:14px;font-weight:500;color:var(--tx2);transition:color .2s;white-space:nowrap}
+.nl a:hover{color:var(--or)}
+.nr{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.bn{font-size:13px;font-weight:600;padding:8px 16px;border-radius:8px;cursor:pointer;transition:all .2s;border:none;white-space:nowrap}
+.bno{background:transparent;color:var(--tx2);border:1.5px solid var(--br2)}
+.bno:hover{border-color:var(--or);color:var(--or)}
+.bnp{background:var(--or);color:#fff}
+.bnp:hover{background:var(--or2)}
+.hbg{display:none;background:none;border:none;cursor:pointer;padding:6px;flex-shrink:0}
+.hbg span{display:block;width:22px;height:2px;background:var(--tx);margin:5px 0;transition:all .3s;border-radius:1px}
+.hbg.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hbg.open span:nth-child(2){opacity:0}
+.hbg.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* HERO */
-.hero{padding:72px 48px 80px;display:flex;align-items:center;gap:60px;max-width:1200px;margin:0 auto}
-.hero-left{flex:1;min-width:0}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--or);background:var(--ord);border:1px solid var(--org);border-radius:99px;padding:5px 14px;margin-bottom:20px}
-.hero-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--or);animation:blink 2s infinite}
+.mob{display:none;position:fixed;inset:0;z-index:199;background:rgba(255,255,255,.98);backdrop-filter:blur(16px);flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:80px 32px 32px}
+.mob.open{display:flex}
+.mob a{font-family:var(--hd);font-size:22px;font-weight:700;color:var(--tx);transition:color .2s}
+.mob a:hover{color:var(--or)}
+.mob-cta{margin-top:8px;width:100%;max-width:280px}
+.mob-cta button{width:100%;padding:14px;background:var(--or);color:#fff;font-family:var(--hd);font-size:16px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer}
+
+.hero{padding:clamp(40px,7vw,80px) clamp(16px,4vw,48px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);align-items:center;max-width:1200px;margin:0 auto}
+.htag{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--or);background:var(--ord);border:1px solid var(--org);border-radius:99px;padding:5px 14px;margin-bottom:20px}
+.htag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--or);animation:blink 2s infinite;flex-shrink:0}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-h1{font-family:var(--hd);font-size:clamp(36px,5vw,58px);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:var(--tx);margin-bottom:16px}
+h1{font-family:var(--hd);font-size:clamp(30px,4.5vw,58px);font-weight:700;line-height:1.08;letter-spacing:-.02em;margin-bottom:16px}
 h1 span{color:var(--or)}
-.hero-sub{font-size:16px;color:var(--tx2);line-height:1.75;margin-bottom:32px;max-width:480px}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
-.btn-lg{font-size:15px;font-weight:600;padding:13px 28px;border-radius:var(--r);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px;border:none}
-.btn-prim{background:var(--or);color:#fff}
-.btn-prim:hover{background:var(--or2)}
-.btn-sec{background:var(--bg2);color:var(--tx2);border:1.5px solid var(--br2)}
-.btn-sec:hover{border-color:var(--or);color:var(--or)}
-.hero-trust{display:flex;gap:24px;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--mu)}
-.trust-item svg{width:16px;height:16px;stroke:var(--or);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.hero-right{flex:0 0 440px;background:var(--bg2);border-radius:16px;border:1px solid var(--br);padding:32px;overflow:hidden}
+.hsub{font-size:clamp(13px,2vw,16px);color:var(--tx2);line-height:1.75;margin-bottom:28px;max-width:460px}
+.hbtns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.bl{font-size:14px;font-weight:600;padding:12px 24px;border-radius:var(--r);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px;border:none;white-space:nowrap}
+.bp{background:var(--or);color:#fff}.bp:hover{background:var(--or2)}
+.bs{background:var(--bg2);color:var(--tx2);border:1.5px solid var(--br2)}.bs:hover{border-color:var(--or);color:var(--or)}
+.htrust{display:flex;gap:16px;flex-wrap:wrap}
+.ti{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--mu)}
+.ti svg{width:14px;height:14px;stroke:var(--or);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
-/* UPLOAD CARD */
-.upload-card{text-align:center}
-.upload-zone{border:2px dashed var(--br2);border-radius:12px;padding:36px 24px;cursor:pointer;transition:all .2s;margin-bottom:20px;position:relative}
-.upload-zone:hover,.upload-zone.drag{border-color:var(--or);background:var(--ord)}
-.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.upload-icon{width:48px;height:48px;background:var(--ord);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
-.upload-icon svg{width:24px;height:24px;stroke:var(--or);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.upload-title{font-family:var(--hd);font-size:16px;font-weight:700;color:var(--tx);margin-bottom:4px}
-.upload-sub{font-size:12px;color:var(--mu)}
-.file-name{font-size:13px;font-weight:600;color:var(--or);margin-top:8px;display:none}
-.upload-form-fields{display:flex;flex-direction:column;gap:10px}
-.uf-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.uf select,.uf input,.uf textarea{width:100%;padding:10px 12px;border:1.5px solid var(--br2);border-radius:8px;font-family:var(--bd);font-size:13px;color:var(--tx);background:var(--bg);outline:none;transition:border-color .2s;-webkit-appearance:none}
-.uf select:focus,.uf input:focus,.uf textarea:focus{border-color:var(--or)}
-.uf textarea{resize:vertical;min-height:70px}
-.uf select option{background:#fff}
-.upload-submit{width:100%;padding:13px;background:var(--or);color:#fff;font-family:var(--hd);font-size:15px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer;transition:background .2s;margin-top:4px}
-.upload-submit:hover{background:var(--or2)}
-.upload-note{font-size:11px;color:var(--mu);margin-top:10px;text-align:center}
+.hright{background:var(--bg2);border-radius:16px;border:1px solid var(--br);padding:clamp(18px,3vw,28px)}
+.uz{border:2px dashed var(--br2);border-radius:12px;padding:24px 16px;cursor:pointer;transition:all .2s;margin-bottom:14px;position:relative;text-align:center}
+.uz:hover,.uz.drag{border-color:var(--or);background:var(--ord)}
+.uz input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.uico{width:42px;height:42px;background:var(--ord);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.uico svg{width:20px;height:20px;stroke:var(--or);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ut{font-family:var(--hd);font-size:15px;font-weight:700;color:var(--tx);margin-bottom:3px}
+.us{font-size:11px;color:var(--mu)}
+.fn{font-size:12px;font-weight:600;color:var(--or);margin-top:6px;display:none}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.fi input,.fi select,.fi textarea{width:100%;padding:9px 11px;border:1.5px solid var(--br2);border-radius:8px;font-family:var(--bd);font-size:13px;color:var(--tx);background:var(--bg);outline:none;transition:border-color .2s;-webkit-appearance:none}
+.fi input:focus,.fi select:focus,.fi textarea:focus{border-color:var(--or)}
+.fi textarea{resize:vertical;min-height:55px;grid-column:1/-1}
+.fi select option{background:#fff}
+.ubtn{width:100%;padding:12px;background:var(--or);color:#fff;font-family:var(--hd);font-size:14px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer;transition:background .2s;margin-top:4px}
+.ubtn:hover{background:var(--or2)}
+.fnote{font-size:11px;color:var(--mu);margin-top:7px;text-align:center}
+.smsg{display:none;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:11px;text-align:center;margin-top:8px;font-size:13px;color:#166534;font-weight:500}
 
-/* STATS BAR */
-.stats-bar{background:var(--tx);padding:28px 48px;display:flex;justify-content:center;gap:80px;flex-wrap:wrap}
-.sb-item{text-align:center}
-.sb-val{font-family:var(--hd);font-size:28px;font-weight:700;color:#fff}
-.sb-lbl{font-size:12px;color:rgba(255,255,255,.55);margin-top:2px;font-weight:500}
+.sbar{background:var(--tx);padding:clamp(18px,3vw,28px) clamp(16px,4vw,48px);display:flex;justify-content:center;gap:clamp(20px,5vw,80px);flex-wrap:wrap}
+.sv{font-family:var(--hd);font-size:clamp(18px,3vw,28px);font-weight:700;color:#fff}
+.sl2{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;font-weight:500}
 
-/* SECTIONS */
-.sec{padding:80px 48px;max-width:1200px;margin:0 auto}
-.sec-c{text-align:center;margin-bottom:48px}
-.ey{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--or);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
-.ey::before{content:'';width:20px;height:2px;background:var(--or);border-radius:1px}
-h2{font-family:var(--hd);font-size:clamp(26px,4vw,40px);font-weight:700;letter-spacing:-.02em;color:var(--tx);margin-bottom:10px}
-.sub{font-size:15px;color:var(--tx2);max-width:520px;margin:0 auto;line-height:1.75}
+.sec{padding:clamp(44px,7vw,80px) clamp(16px,4vw,48px);max-width:1200px;margin:0 auto}
+.secf{padding:clamp(44px,7vw,64px) clamp(16px,4vw,48px);background:var(--bg2);border-top:1px solid var(--br);border-bottom:1px solid var(--br)}
+.secfi{max-width:1200px;margin:0 auto}
+.scc{text-align:center;margin-bottom:36px}
+.ey{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:var(--or);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.ey::before{content:'';width:18px;height:2px;background:var(--or);border-radius:1px;flex-shrink:0}
+h2{font-family:var(--hd);font-size:clamp(22px,4vw,40px);font-weight:700;letter-spacing:-.02em;color:var(--tx);margin-bottom:10px}
+.sub{font-size:14px;color:var(--tx2);max-width:520px;margin:0 auto;line-height:1.75}
 
-/* SERVICES */
-.srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
-.srv-card{background:var(--bg2);border:1px solid var(--br);border-radius:14px;padding:28px;transition:all .2s;cursor:pointer}
-.srv-card:hover{border-color:var(--or);transform:translateY(-2px)}
-.srv-ico{width:48px;height:48px;background:var(--ord);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-.srv-ico svg{width:22px;height:22px;stroke:var(--or);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.srv-name{font-family:var(--hd);font-size:17px;font-weight:700;color:var(--tx);margin-bottom:8px}
-.srv-desc{font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:16px}
-.srv-tags{display:flex;flex-wrap:wrap;gap:6px}
-.srv-tag{font-size:11px;font-weight:500;padding:3px 10px;border-radius:99px;background:var(--bg3);color:var(--mu);border:1px solid var(--br)}
+.fbar{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
+.ff{font-size:12px;font-weight:600;padding:6px 14px;border-radius:99px;border:1.5px solid var(--br2);color:var(--mu);background:transparent;cursor:pointer;transition:all .2s}
+.ff:hover{color:var(--tx);border-color:var(--tx)}
+.ff.on{background:var(--or);color:#fff;border-color:var(--or)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.pc{background:var(--bg2);border:1px solid var(--br);border-radius:14px;padding:22px;cursor:pointer;transition:all .2s;display:flex;flex-direction:column}
+.pc:hover{border-color:var(--or);transform:translateY(-2px)}
+.pctop{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.pcico{width:44px;height:44px;background:var(--ord);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pcico svg{width:21px;height:21px;stroke:var(--or);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pcroz{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:99px}
+.rp{background:rgba(249,115,22,.12);color:var(--or);border:1px solid rgba(249,115,22,.25)}
+.rn{background:rgba(34,197,94,.1);color:#16a34a;border:1px solid rgba(74,222,128,.25)}
+.rs{background:rgba(239,68,68,.1);color:#dc2626;border:1px solid rgba(239,68,68,.2)}
+.ro{background:rgba(139,92,246,.1);color:#7c3aed;border:1px solid rgba(139,92,246,.2)}
+.pctag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--or);margin-bottom:4px}
+.pcn{font-family:var(--hd);font-size:16px;font-weight:700;color:var(--tx);margin-bottom:7px;line-height:1.2}
+.pcd{font-size:13px;color:var(--tx2);line-height:1.65;margin-bottom:13px;flex:1}
+.pccs{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:13px}
+.pcc{font-size:11px;padding:2px 8px;border-radius:99px;background:var(--bg3);color:var(--mu);border:1px solid var(--br)}
+.pcf{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--br)}
+.pcpr{font-family:var(--hd);font-size:16px;font-weight:700;color:var(--or)}
 
-/* PROCESS */
-.proc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;background:var(--br);border-radius:14px;overflow:hidden;border:1px solid var(--br)}
-.ps{background:var(--bg);padding:28px 24px;position:relative}
-.ps:not(:last-child)::after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--or);z-index:1}
-.ps-n{font-family:var(--hd);font-size:11px;font-weight:700;color:var(--or);letter-spacing:.1em;margin-bottom:10px}
-.ps-t{font-family:var(--hd);font-size:16px;font-weight:700;color:var(--tx);margin-bottom:6px}
-.ps-d{font-size:12px;color:var(--mu);line-height:1.65}
+.proc{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0;background:var(--br);border-radius:14px;overflow:hidden;border:1px solid var(--br)}
+.ps{background:var(--bg);padding:22px 18px;position:relative}
+.ps:not(:last-child)::after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--or);z-index:1;background:var(--bg);padding:2px}
+.psn{font-size:10px;font-weight:700;color:var(--or);letter-spacing:.1em;margin-bottom:7px}
+.pst{font-family:var(--hd);font-size:14px;font-weight:700;color:var(--tx);margin-bottom:4px}
+.psd{font-size:12px;color:var(--mu);line-height:1.6}
 
-/* B2B */
-.b2b-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-.tier-table{border-radius:14px;overflow:hidden;border:1px solid var(--br)}
-.tier-head{background:var(--tx);color:#fff;padding:18px 24px;font-family:var(--hd);font-size:15px;font-weight:700}
-.tier-row{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--br);background:var(--bg);transition:background .2s}
-.tier-row:hover{background:var(--bg2)}
-.tier-row:last-child{border:none}
-.tier-row.feat{background:#fff7ed;border-left:3px solid var(--or)}
-.tr-qty{font-size:14px;font-weight:600;color:var(--tx2)}
-.tr-disc{font-family:var(--hd);font-size:26px;font-weight:700;color:var(--or)}
-.tr-lbl{font-size:11px;color:var(--mu);font-weight:500}
-.fpill{font-size:10px;font-weight:700;padding:3px 9px;background:var(--or);color:#fff;border-radius:99px}
-.b2b-info{display:flex;flex-direction:column;gap:14px}
-.ib{padding:18px 20px;background:var(--bg2);border-radius:10px;border:1px solid var(--br);border-left:3px solid var(--or)}
-.ib-l{font-size:11px;font-weight:600;color:var(--or);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
-.ib-v{font-size:14px;font-weight:600;color:var(--tx)}
-.ib-s{font-size:12px;color:var(--mu);margin-top:2px}
+.b2bw{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.tbl{border-radius:12px;overflow:hidden;border:1px solid var(--br)}
+.thd{background:var(--tx);color:#fff;padding:14px 20px;font-family:var(--hd);font-size:14px;font-weight:700}
+.trow{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--br);background:var(--bg);transition:background .2s}
+.trow:hover{background:var(--bg2)}
+.trow:last-child{border:none}
+.trow.feat{background:#fff7ed;border-left:3px solid var(--or)}
+.tqty{font-size:13px;font-weight:600;color:var(--tx2)}
+.tdisc{font-family:var(--hd);font-size:22px;font-weight:700;color:var(--or)}
+.tlbl{font-size:10px;color:var(--mu);font-weight:500}
+.fpill{font-size:9px;font-weight:700;padding:2px 7px;background:var(--or);color:#fff;border-radius:99px}
+.b2bi{display:flex;flex-direction:column;gap:10px}
+.ib{padding:14px 16px;background:var(--bg2);border-radius:10px;border:1px solid var(--br);border-left:3px solid var(--or)}
+.ibl{font-size:10px;font-weight:700;color:var(--or);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+.ibv{font-size:13px;font-weight:600;color:var(--tx)}
+.ibs{font-size:11px;color:var(--mu);margin-top:1px}
 
-/* MATERIALS */
-.mat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
-.mat-card{background:var(--bg2);border:1px solid var(--br);border-radius:12px;padding:20px 16px;text-align:center;transition:all .2s;cursor:pointer}
-.mat-card:hover{border-color:var(--or);background:#fff7ed}
-.mat-name{font-family:var(--hd);font-size:16px;font-weight:700;color:var(--tx);margin-bottom:4px}
-.mat-use{font-size:12px;color:var(--mu);margin-bottom:10px;line-height:1.5}
-.mat-chip{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--ord);color:var(--or);border:1px solid var(--org)}
+.ciw{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;margin-bottom:32px}
+.plcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:2px;background:var(--br);border-radius:10px;overflow:hidden}
+.plc{background:var(--bg);padding:22px;transition:background .2s}
+.plc:hover{background:var(--bg2)}
+.plbdg{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:4px;display:inline-block;margin-bottom:10px}
+.plig{background:rgba(225,48,108,.1);color:#e1306c;border:1px solid rgba(225,48,108,.2)}
+.pltt{background:rgba(0,0,0,.06);color:#111;border:1px solid rgba(0,0,0,.12)}
+.plyt{background:rgba(255,0,0,.08);color:#dc2626;border:1px solid rgba(255,0,0,.18)}
+.plal{background:var(--ord);color:var(--or);border:1px solid var(--org)}
+.plct{font-family:var(--hd);font-size:15px;font-weight:700;color:var(--tx);margin-bottom:5px}
+.plcd{font-size:12px;color:var(--tx2);line-height:1.65}
+.ctab{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:18px 22px;background:var(--bg2);border-radius:10px;border:1px solid var(--br);margin-top:2px}
+.slks{display:flex;gap:7px;flex-wrap:wrap}
+.slk{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:7px 13px;border-radius:8px;border:1.5px solid var(--br2);color:var(--mu);transition:all .2s}
+.slk:hover{color:var(--or);border-color:var(--org)}
 
-/* TESTIMONIALS */
-.test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
-.test-card{background:var(--bg2);border:1px solid var(--br);border-radius:14px;padding:24px}
-.test-stars{color:var(--or);font-size:14px;margin-bottom:10px}
-.test-text{font-size:14px;color:var(--tx2);line-height:1.7;margin-bottom:16px;font-style:italic}
-.test-name{font-size:13px;font-weight:600;color:var(--tx)}
-.test-role{font-size:12px;color:var(--mu)}
+.tcg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.tcd{background:var(--bg2);border:1px solid var(--br);border-radius:14px;padding:20px}
+.tcs{color:var(--or);font-size:13px;margin-bottom:9px;letter-spacing:2px}
+.tct{font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:13px;font-style:italic}
+.tcn{font-size:13px;font-weight:600;color:var(--tx)}
+.tcr{font-size:11px;color:var(--mu)}
 
-/* CONTACT */
-.contact-wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:48px}
-.ci-list{display:flex;flex-direction:column;gap:14px}
-.ci{background:var(--bg2);border:1px solid var(--br);border-radius:10px;padding:16px 18px;border-left:3px solid var(--or)}
-.ci-l{font-size:11px;font-weight:600;color:var(--or);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
-.ci-v{font-size:14px;font-weight:600;color:var(--tx)}
-.ci-s{font-size:12px;color:var(--mu);margin-top:2px}
-.fbox{background:var(--bg2);border:1px solid var(--br);border-radius:14px;padding:32px}
-.fg{margin-bottom:14px}
-.fg label{display:block;font-size:12px;font-weight:600;color:var(--tx2);margin-bottom:5px}
-.fg input,.fg select,.fg textarea{width:100%;padding:11px 14px;border:1.5px solid var(--br2);border-radius:8px;font-family:var(--bd);font-size:14px;color:var(--tx);background:var(--bg);outline:none;transition:border-color .2s;-webkit-appearance:none}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--or)}
-.fg textarea{resize:vertical;min-height:100px}
-.fr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.sbtn{width:100%;padding:13px;background:var(--or);color:#fff;font-family:var(--hd);font-size:15px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer;transition:background .2s;margin-top:4px}
+.bgg{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.bc{background:var(--bg2);border:1px solid var(--br);border-radius:14px;padding:22px;cursor:pointer;transition:all .2s;display:block}
+.bc:hover{border-color:var(--or);transform:translateY(-2px)}
+.bccat{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--or);margin-bottom:9px}
+.bccat::before{content:'';width:11px;height:2px;background:var(--or);flex-shrink:0}
+.bct{font-family:var(--hd);font-size:16px;font-weight:700;color:var(--tx);margin-bottom:7px;line-height:1.2}
+.bce{font-size:13px;color:var(--tx2);line-height:1.65;margin-bottom:13px}
+.bcm{display:flex;align-items:center}
+.bcr{font-size:11px;font-weight:600;color:var(--mu)}
+.bcar{font-size:14px;color:var(--or);margin-left:auto;opacity:0;transition:opacity .2s}
+.bc:hover .bcar{opacity:1}
+
+.faqg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.fmi{background:var(--bg2);border:1px solid var(--br);border-radius:12px;padding:16px}
+.fmiq{font-size:13px;font-weight:600;color:var(--tx);margin-bottom:5px}
+.fmia{font-size:12px;color:var(--tx2);line-height:1.65}
+
+.cw{display:grid;grid-template-columns:1fr 1.5fr;gap:36px;align-items:start}
+.cilist{display:flex;flex-direction:column;gap:10px}
+.ci{background:var(--bg2);border:1px solid var(--br);border-radius:10px;padding:13px 15px;border-left:3px solid var(--or)}
+.cil{font-size:10px;font-weight:700;color:var(--or);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+.civ{font-size:13px;font-weight:600;color:var(--tx)}
+.cis{font-size:11px;color:var(--mu);margin-top:1px}
+.fbox{background:var(--bg2);border:1px solid var(--br);border-radius:14px;padding:clamp(18px,3vw,28px)}
+.fg2{margin-bottom:11px}
+.fg2 label{display:block;font-size:11px;font-weight:600;color:var(--tx2);margin-bottom:4px}
+.fg2 input,.fg2 select,.fg2 textarea{width:100%;padding:9px 11px;border:1.5px solid var(--br2);border-radius:8px;font-family:var(--bd);font-size:13px;color:var(--tx);background:var(--bg);outline:none;transition:border-color .2s;-webkit-appearance:none}
+.fg2 input:focus,.fg2 select:focus,.fg2 textarea:focus{border-color:var(--or)}
+.fg2 textarea{resize:vertical;min-height:85px}
+.fg2 select option{background:#fff}
+.fgr{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.sbtn{width:100%;padding:12px;background:var(--or);color:#fff;font-family:var(--hd);font-size:14px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer;transition:background .2s}
 .sbtn:hover{background:var(--or2)}
+.fnote2{font-size:11px;color:var(--mu);text-align:center;margin-top:7px}
 
-/* FAQ (on index = mini) */
-.faq-mini{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.faq-item-mini{background:var(--bg2);border:1px solid var(--br);border-radius:12px;padding:20px}
-.faq-q-mini{font-size:14px;font-weight:600;color:var(--tx);margin-bottom:8px}
-.faq-a-mini{font-size:13px;color:var(--tx2);line-height:1.65}
+.ctabanner{background:var(--tx);border-radius:16px;padding:clamp(24px,4vw,44px);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;max-width:1200px;margin:0 clamp(16px,4vw,48px)}
+.ctabanner h3{font-family:var(--hd);font-size:clamp(18px,3vw,26px);font-weight:700;color:#fff;margin-bottom:4px}
+.ctabanner p{font-size:13px;color:rgba(255,255,255,.5)}
 
-/* BANNER */
-.cta-banner{background:var(--tx);border-radius:16px;padding:48px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin:0 48px 80px;max-width:calc(1200px - 96px);margin-left:auto;margin-right:auto}
-.cta-banner h3{font-family:var(--hd);font-size:28px;font-weight:700;color:#fff;margin-bottom:6px}
-.cta-banner p{font-size:14px;color:rgba(255,255,255,.6)}
-
-/* FOOTER */
-footer{background:var(--bg2);border-top:1px solid var(--br);padding:56px 48px 28px}
-.ft{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px;max-width:1200px;margin:0 auto 40px}
-.ft-tag{font-size:13px;color:var(--mu);margin-top:10px;line-height:1.7;max-width:200px}
-.fc-t{font-size:12px;font-weight:700;color:var(--tx);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
-.fc a{display:block;font-size:13px;color:var(--mu);margin-bottom:9px;transition:color .2s}
+footer{background:var(--bg2);border-top:1px solid var(--br);padding:clamp(32px,5vw,52px) clamp(16px,4vw,48px) clamp(18px,3vw,26px)}
+.ft{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:28px;margin-bottom:32px;max-width:1200px;margin:0 auto 32px}
+.fttag{font-size:12px;color:var(--mu);margin-top:8px;line-height:1.65;max-width:190px}
+.fct{font-size:11px;font-weight:700;color:var(--tx);letter-spacing:.06em;text-transform:uppercase;margin-bottom:11px}
+.fc a{display:block;font-size:13px;color:var(--mu);margin-bottom:7px;transition:color .2s}
 .fc a:hover{color:var(--or)}
-.fb2{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding-top:24px;border-top:1px solid var(--br);max-width:1200px;margin:0 auto}
-.fc2{font-size:12px;color:var(--mu)}
-.fsoc{display:flex;gap:8px}
-.fso{font-size:12px;font-weight:600;padding:6px 14px;border:1px solid var(--br2);color:var(--mu);border-radius:8px;transition:all .2s}
+.fb2{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px;padding-top:18px;border-top:1px solid var(--br);max-width:1200px;margin:0 auto}
+.fc2{font-size:11px;color:var(--mu)}
+.fsoc{display:flex;gap:5px}
+.fso{font-size:11px;font-weight:600;padding:5px 11px;border:1px solid var(--br2);color:var(--mu);border-radius:6px;transition:all .2s}
 .fso:hover{color:var(--or);border-color:var(--org)}
 
-/* MOBILE */
-.mob{display:none;position:fixed;inset:0;z-index:199;background:rgba(255,255,255,.98);flex-direction:column;align-items:center;justify-content:center;gap:24px}
-.mob.open{display:flex}
-.mob a{font-size:22px;font-weight:700;color:var(--tx)}
-.mob a:hover{color:var(--or)}
-.mob-x{position:absolute;top:20px;right:22px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--tx)}
-
-/* REVEAL */
-.rv{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
 .rv.in{opacity:1;transform:none}
 
-/* SUCCESS */
-.success-msg{display:none;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:16px;text-align:center;margin-top:12px;font-size:14px;color:#166534;font-weight:500}
-
-@media(max-width:960px){
-  nav{padding:0 20px}
-  .nav-links{display:none}
+@media(max-width:1024px){
+  .nl,.bno{display:none}
   .hbg{display:block}
-  .hero{flex-direction:column;padding:48px 20px 60px;gap:32px}
-  .hero-right{flex:none;width:100%}
-  .sec{padding:56px 20px}
-  .stats-bar{padding:20px;gap:32px}
-  .b2b-wrap,.contact-wrap{grid-template-columns:1fr}
-  .faq-mini{grid-template-columns:1fr}
-  .cta-banner{margin:0 20px 60px;padding:32px}
-  .ft{grid-template-columns:1fr 1fr;padding:0 20px}
-  footer{padding:48px 20px 24px}
-  .fr{grid-template-columns:1fr}
+  .hero{grid-template-columns:1fr;padding-top:36px}
+  .hright{max-width:100%}
+  .b2bw,.cw,.ciw{grid-template-columns:1fr}
+  .fgr{grid-template-columns:1fr}
+  .ft{grid-template-columns:1fr 1fr}
+  .proc{grid-template-columns:1fr 1fr}
+  .ps:not(:last-child)::after{display:none}
+  .ctabanner{margin:0 clamp(16px,4vw,48px)}
 }
-@media(max-width:480px){
-  .hero-right{padding:20px}
-  .proc-grid{grid-template-columns:1fr}
-  .ps:not(:last-child)::after{content:'↓';right:50%;top:auto;bottom:-14px;transform:translateX(50%)}
+@media(max-width:600px){
+  .fgrid,.fgr{grid-template-columns:1fr}
+  .pgrid{grid-template-columns:1fr}
   .ft{grid-template-columns:1fr}
+  .proc{grid-template-columns:1fr}
+  .sbar{gap:18px}
+  h1{font-size:30px}
+  .hbtns .bl{width:100%;justify-content:center}
+  .faqg,.tcg,.bgg{grid-template-columns:1fr}
+  .ctab{flex-direction:column;align-items:flex-start}
+  .slks{width:100%}
+  .slk{flex:1;text-align:center;justify-content:center}
 }
 </style>
 </head>
 <body>
 
-<nav>
+<nav id="main-nav">
   <a href="index.html" class="logo">
-    <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
-      <rect width="32" height="32" rx="6" fill="#f97316"/>
-      <path d="M16 4L27 10V22L16 28L5 22V10Z" stroke="white" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
-      <path d="M16 4L16 28" stroke="white" stroke-width="1.2" stroke-dasharray="2 2" opacity=".65"/>
-      <circle cx="16" cy="16" r="2.5" fill="white"/>
-      <circle cx="16" cy="4" r="1.4" fill="white"/>
-      <circle cx="27" cy="10" r="1.4" fill="white"/>
-      <circle cx="27" cy="22" r="1.4" fill="white"/>
-      <circle cx="16" cy="28" r="1.4" fill="white"/>
-      <circle cx="5" cy="22" r="1.4" fill="white"/>
-      <circle cx="5" cy="10" r="1.4" fill="white"/>
+    <svg class="lm" viewBox="0 0 32 32" fill="none">
+      <rect width="32" height="32" rx="7" fill="#111"/>
+      <polygon points="6,24 16,19 26,24 16,29" fill="#f97316" opacity=".2"/>
+      <polygon points="7,19 16,14 25,19 16,24" fill="#f97316" opacity=".55"/>
+      <polygon points="8,13 16,9 24,13 16,18" fill="#f97316"/>
+      <polygon points="13,9 16,7.5 19,9 16,10.5" fill="#fff"/>
     </svg>
-    <span class="logo-name">3<b>Δ</b>DELTA</span>
+    <span class="ln">3<b>Delta</b></span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#hizmetler">Hizmetler</a></li>
+  <ul class="nl">
+    <li><a href="#urunler">Ürünler</a></li>
     <li><a href="#malzemeler">Malzemeler</a></li>
     <li><a href="#toptan">Toptan</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="hakkimizda.html">Hakkımızda</a></li>
     <li><a href="#iletisim">İletişim</a></li>
   </ul>
-  <div class="nav-r">
-    <a href="hakkimizda.html" class="btn-nav btn-nav-out">Hakkımızda</a>
-    <button class="btn-nav btn-nav-prim" onclick="document.querySelector('.hero-right').scrollIntoView({behavior:'smooth'})">Dosya Yükle →</button>
-    <button class="hbg" onclick="document.querySelector('.mob').classList.add('open')"><span></span><span></span><span></span></button>
+  <div class="nr">
+    <button class="bn bnp" onclick="document.querySelector('.hright').scrollIntoView({behavior:'smooth'})">Dosya Yükle →</button>
+    <button class="hbg" id="hbg-btn" onclick="toggleMob()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<div class="mob">
-  <button class="mob-x" onclick="document.querySelector('.mob').classList.remove('open')">✕</button>
-  <a href="#hizmetler" onclick="document.querySelector('.mob').classList.remove('open')">Hizmetler</a>
-  <a href="#malzemeler" onclick="document.querySelector('.mob').classList.remove('open')">Malzemeler</a>
-  <a href="#toptan" onclick="document.querySelector('.mob').classList.remove('open')">Toptan</a>
-  <a href="blog.html" onclick="document.querySelector('.mob').classList.remove('open')">Blog</a>
-  <a href="hakkimizda.html" onclick="document.querySelector('.mob').classList.remove('open')">Hakkımızda</a>
-  <a href="#iletisim" onclick="document.querySelector('.mob').classList.remove('open')">İletişim</a>
+<div class="mob" id="mob-nav">
+  <a href="#urunler" onclick="closeMob()">Ürünler</a>
+  <a href="#malzemeler" onclick="closeMob()">Malzemeler</a>
+  <a href="#toptan" onclick="closeMob()">Toptan</a>
+  <a href="blog.html" onclick="closeMob()">Blog</a>
+  <a href="hakkimizda.html" onclick="closeMob()">Hakkımızda</a>
+  <a href="#iletisim" onclick="closeMob()">İletişim</a>
+  <div class="mob-cta"><button onclick="closeMob();document.querySelector('.hright').scrollIntoView({behavior:'smooth'})">Dosya Yükle →</button></div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
-  <div class="hero-left">
-    <div class="hero-tag">Türkiye'nin Maker Stüdyosu</div>
-    <h1>Dosyanı Yükle,<br><span>Anında Teklif Al</span></h1>
-    <p class="hero-sub">Araba aksesuar, elektronik kutu, RC parça, hobi ürünleri ve tam özel tasarım. STL veya STEP dosyani yükle, 24 saat içinde fiyat teklifi iletilir.</p>
-    <div class="hero-btns">
-      <a href="#hizmetler" class="btn-lg btn-prim">Hizmetleri İncele →</a>
-      <a href="#toptan" class="btn-lg btn-sec">Toptan Fiyat</a>
-    </div>
-    <div class="hero-trust">
-      <div class="trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>72 saat teslimat</div>
-      <div class="trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Fatura kesilir</div>
-      <div class="trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Ücretsiz tasarım danışmanlığı</div>
-    </div>
-  </div>
-
-  <!-- UPLOAD FORM -->
-  <div class="hero-right">
-    <div class="upload-card">
-      <!-- FORMSPREE: action'ı kendin güncelle (kurulum notuna bak) -->
-      <form id="upload-form" action="https://formspree.io/f/BURAYA_FORMSPREE_ID" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_subject" value="3Delta - Yeni Dosya Yükleme Talebi">
-        <input type="hidden" name="_replyto" value="">
-
-        <div class="upload-zone" id="drop-zone">
-          <input type="file" name="dosya" id="file-input" accept=".stl,.step,.obj,.3mf,.stp" onchange="handleFile(this)">
-          <div class="upload-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
-          <div class="upload-title">Dosyanı Buraya Bırak</div>
-          <div class="upload-sub">STL, STEP, OBJ, 3MF — max 50MB</div>
-          <div class="file-name" id="file-name"></div>
-        </div>
-
-        <div class="upload-form-fields">
-          <div class="uf-row">
-            <div class="uf"><input type="text" name="ad_soyad" placeholder="Ad Soyad" required></div>
-            <div class="uf"><input type="text" name="telefon" placeholder="Telefon / E-posta" required></div>
-          </div>
-          <div class="uf-row">
-            <div class="uf">
-              <select name="malzeme">
-                <option value="">Malzeme seçin</option>
-                <option>PLA</option>
-                <option>PETG</option>
-                <option>TPU (Esnek)</option>
-                <option>ABS</option>
-                <option>Reçine (SLA)</option>
-                <option>Bilmiyorum — öneri isteyin</option>
-              </select>
-            </div>
-            <div class="uf">
-              <select name="renk">
-                <option value="">Renk seçin</option>
-                <option>Siyah</option>
-                <option>Beyaz</option>
-                <option>Gri</option>
-                <option>Kırmızı</option>
-                <option>Mavi</option>
-                <option>Yeşil</option>
-                <option>Turuncu</option>
-                <option>Şeffaf</option>
-                <option>Özel renk</option>
-              </select>
-            </div>
-          </div>
-          <div class="uf-row">
-            <div class="uf"><input type="number" name="adet" placeholder="Adet" min="1" value="1"></div>
-            <div class="uf"><input type="text" name="butce" placeholder="Bütçe (opsiyonel)"></div>
-          </div>
-          <div class="uf"><textarea name="notlar" placeholder="Ek notlar, özel istekler..." rows="2"></textarea></div>
-        </div>
-        <button type="submit" class="upload-submit" id="upload-btn">Teklif İste — Ücretsiz →</button>
-        <div class="upload-note">24 saat içinde yanıt · Fiyat teklifi tamamen ücretsiz</div>
-        <div class="success-msg" id="success-msg">✓ Talebiniz alındı! 24 saat içinde iletişime geçeceğiz.</div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="sb-item"><div class="sb-val">72 Saat</div><div class="sb-lbl">Ortalama teslimat</div></div>
-  <div class="sb-item"><div class="sb-val">%100</div><div class="sb-lbl">Yerli üretim</div></div>
-  <div class="sb-item"><div class="sb-val">4+ Filament</div><div class="sb-lbl">Malzeme seçeneği</div></div>
-  <div class="sb-item"><div class="sb-val">B2B</div><div class="sb-lbl">Fatura + irsaliye</div></div>
-</div>
-
-<!-- HİZMETLER -->
-<div class="sec" id="hizmetler">
-  <div class="sec-c rv">
-    <div class="ey">Hizmetler</div>
-    <h2>3D Çözümlerimiz</h2>
-    <p class="sub">İhtiyacına özel üretim. Fikir aşamasından teslimata kadar yanında.</p>
-  </div>
-  <div class="srv-grid rv">
-    <div class="srv-card"><div class="srv-ico"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="11" rx="3"/><circle cx="6.5" cy="18.5" r="2.5"/><circle cx="17.5" cy="18.5" r="2.5"/><path d="M6 7V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2"/></svg></div><div class="srv-name">Otomotiv Aksesuar</div><div class="srv-desc">Araç içi aksesuar, direksiyon eklentisi, torpido düzenleyici, kablo yönetici. Araç modeline özel ölçü.</div><div class="srv-tags"><span class="srv-tag">PETG</span><span class="srv-tag">Isıya dayanıklı</span><span class="srv-tag">Özel renk</span></div></div>
-    <div class="srv-card"><div class="srv-ico"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><rect x="6" y="8" width="12" height="8" rx="1"/></svg></div><div class="srv-name">Elektronik Muhafaza</div><div class="srv-desc">Arduino, Raspberry Pi, ESP32 ve her PCB için özel kutu. Havalandırma delikli, kablo çıkışlı, vida montajlı.</div><div class="srv-tags"><span class="srv-tag">PLA/PETG</span><span class="srv-tag">Özel boyut</span><span class="srv-tag">DIN ray</span></div></div>
-    <div class="srv-card"><div class="srv-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><line x1="3" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="21" y2="12"/></svg></div><div class="srv-name">Hobi & RC Parça</div><div class="srv-desc">RC araba yedek parça, servo braketi, şasi eklentisi, bodywork. Kırılan orijinal parça yerine birebir geçer.</div><div class="srv-tags"><span class="srv-tag">PLA/PETG</span><span class="srv-tag">Yüksek dayanım</span><span class="srv-tag">Tam uyum</span></div></div>
-    <div class="srv-card"><div class="srv-ico"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="srv-name">Figür & Koleksiyon</div><div class="srv-desc">DnD miniatureleri, koleksiyon figürleri, özel karakter baskısı. Boyama hazır yüzey. Reçine kalitesi detay.</div><div class="srv-tags"><span class="srv-tag">Reçine/PLA</span><span class="srv-tag">Yüksek detay</span><span class="srv-tag">Boyama hazır</span></div></div>
-    <div class="srv-card"><div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="srv-name">Ev & Dekor</div><div class="srv-desc">Raf tutucu, kablo yönetici, duvar dekoru, saksı, anahtar askısı. Özel renk ve boyutla sipariş verilebilir.</div><div class="srv-tags"><span class="srv-tag">PLA</span><span class="srv-tag">Renkli seçenek</span><span class="srv-tag">Kişisel tasarım</span></div></div>
-    <div class="srv-card" style="border-color:var(--org);background:#fff7ed"><div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div class="srv-name">Özel Tasarım & Üretim</div><div class="srv-desc">Fikrin var, dosyan var ya da sadece açıklaman var — bize yeter. Sıfırdan tasarlar ve basarız. Her boyut, her malzeme.</div><div class="srv-tags"><span class="srv-tag">Tüm malzemeler</span><span class="srv-tag">3D modelleme</span><span class="srv-tag">Prototip</span></div></div>
-  </div>
-</div>
-
-<!-- SÜREÇ -->
-<div style="background:var(--bg2);border-top:1px solid var(--br);border-bottom:1px solid var(--br);padding:64px 48px">
-  <div style="max-width:1200px;margin:0 auto">
-    <div class="sec-c rv" style="margin-bottom:36px">
-      <div class="ey">Nasıl Çalışır</div>
-      <h2>Sipariş Süreci</h2>
-    </div>
-    <div class="proc-grid rv">
-      <div class="ps"><div class="ps-n">ADIM 01</div><div class="ps-t">Dosyayı Yükle</div><div class="ps-d">STL, STEP veya OBJ dosyanı yükle. Dosyan yoksa açıklama ve referans fotoğraf yeterli.</div></div>
-      <div class="ps"><div class="ps-n">ADIM 02</div><div class="ps-t">Teklif Al</div><div class="ps-d">24 saat içinde malzeme, renk ve fiyat teklifi iletilir. Teklif tamamen ücretsiz.</div></div>
-      <div class="ps"><div class="ps-n">ADIM 03</div><div class="ps-t">Onay & Ödeme</div><div class="ps-d">Teklifi onaylarsın, %50 ön ödeme ile üretim başlar. EFT, havale veya kredi kartı.</div></div>
-      <div class="ps"><div class="ps-n">ADIM 04</div><div class="ps-t">Kargoda</div><div class="ps-d">Kalite kontrol sonrası fotoğraf gönderilir. Onay alındıktan sonra 72 saat içinde teslim.</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- MALZEMELER -->
-<div class="sec" id="malzemeler">
-  <div class="sec-c rv">
-    <div class="ey">Malzemeler</div>
-    <h2>Filament & Malzeme Rehberi</h2>
-    <p class="sub">Doğru malzeme seçimi baskı kalitesini doğrudan etkiler. Bilmiyorsan öneri yaparız.</p>
-  </div>
-  <div class="mat-grid rv">
-    <div class="mat-card"><div class="mat-name">PLA</div><div class="mat-use">Ev dekor, figür, prototip. Kolay baskı, detay odaklı projeler.</div><div class="mat-chip">En yaygın</div></div>
-    <div class="mat-card"><div class="mat-name">PETG</div><div class="mat-use">Otomotiv, dış mekan, mekanik parça. Isı ve darbe dayanımı.</div><div class="mat-chip">Çok yönlü</div></div>
-    <div class="mat-card"><div class="mat-name">TPU</div><div class="mat-use">Esnek ürünler, conta, koruyucu kılıf. Rubber hissi.</div><div class="mat-chip">Esnek</div></div>
-    <div class="mat-card"><div class="mat-name">ABS</div><div class="mat-use">Endüstriyel parça, yüksek ısı ortamı, sert yapılar.</div><div class="mat-chip">Dayanıklı</div></div>
-    <div class="mat-card"><div class="mat-name">Reçine</div><div class="mat-use">Yüksek detaylı figür, takı, diş modeli. SLA teknoloji.</div><div class="mat-chip">En detaylı</div></div>
-    <div class="mat-card" style="border-color:var(--org);background:#fff7ed"><div class="mat-name">?</div><div class="mat-use">Hangi malzemeyi seçeceğini bilmiyorsan — proje açıkla, öneri yapalım.</div><div class="mat-chip">Ücretsiz danışman</div></div>
-  </div>
-</div>
-
-<!-- TOPTAN -->
-<div style="background:var(--bg2);border-top:1px solid var(--br);border-bottom:1px solid var(--br);padding:64px 48px" id="toptan">
-  <div style="max-width:1200px;margin:0 auto">
-    <div class="sec-c rv" style="margin-bottom:36px">
-      <div class="ey">Kurumsal Satış</div>
-      <h2>Toptan Fiyat Listesi</h2>
-      <p class="sub">Minimum 10 adet siparişten itibaren. Fatura + irsaliye ile sevkiyat.</p>
-    </div>
-    <div class="b2b-wrap rv">
-      <div class="tier-table">
-        <div class="tier-head">Sipariş Adedine Göre İskonto</div>
-        <div class="tier-row"><div><div class="tr-qty">10 — 49 adet</div><div class="tr-lbl">Başlangıç toptan</div></div><div style="text-align:right"><div class="tr-disc">%10</div><div class="tr-lbl">indirim</div></div></div>
-        <div class="tier-row feat"><div><div class="tr-qty">50 — 99 adet</div><div class="tr-lbl">Orta ölçek</div></div><div style="text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:5px"><span class="fpill">En Popüler</span><div class="tr-disc">%20</div><div class="tr-lbl">indirim</div></div></div>
-        <div class="tier-row"><div><div class="tr-qty">100 — 499 adet</div><div class="tr-lbl">Büyük hacim</div></div><div style="text-align:right"><div class="tr-disc">%30</div><div class="tr-lbl">indirim</div></div></div>
-        <div class="tier-row"><div><div class="tr-qty">500+ adet</div><div class="tr-lbl">Özel anlaşma</div></div><div style="text-align:right"><div class="tr-disc">%40+</div><div class="tr-lbl">özel fiyat</div></div></div>
-      </div>
-      <div class="b2b-info">
-        <div class="ib"><div class="ib-l">Hedef Müşteri</div><div class="ib-v">Otomotiv servisleri · Mimarlar · Fabrikalar</div><div class="ib-s">Küçük işletmeler · E-ticaret satıcıları · Hobi mağazaları</div></div>
-        <div class="ib"><div class="ib-l">Teslimat</div><div class="ib-v">5 — 10 iş günü</div><div class="ib-s">500₺+ siparişlerde kargo ücretsiz</div></div>
-        <div class="ib"><div class="ib-l">Ödeme</div><div class="ib-v">EFT / Havale · Kredi kartı (taksit)</div><div class="ib-s">%50 ön ödeme · Kalan teslimatta</div></div>
-        <div class="ib"><div class="ib-l">Belgeler</div><div class="ib-v">E-fatura + irsaliye ile sevkiyat</div><div class="ib-s">KDV dahil/hariç seçeneği</div></div>
-        <button class="sbtn" onclick="document.getElementById('iletisim').scrollIntoView({behavior:'smooth'})">Toptan Teklif Al →</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MÜŞTERİ YORUMLARI -->
-<div class="sec">
-  <div class="sec-c rv">
-    <div class="ey">Referanslar</div>
-    <h2>Müşteri Yorumları</h2>
-  </div>
-  <div class="test-grid rv">
-    <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Araba için kablo yönetici sipariş ettim. Tam ölçüde geldi, mükemmel baskı kalitesi. Kesinlikle tavsiye ederim."</div><div class="test-name">Mehmet K.</div><div class="test-role">Otomotiv meraklısı</div></div>
-    <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Arduino projem için özel kutu istedim, STL dosyam yoktu. Açıkladım, tasarladılar ve 3 günde elimdeydi. Harika hizmet."</div><div class="test-name">Emre T.</div><div class="test-role">Elektronik hobi</div></div>
-    <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"RC araba şasi parçası için sipariş verdim. Orijinalinden daha sağlam geldi, fiyat da çok uygundu. Tekrar alacağım."</div><div class="test-name">Ali R.</div><div class="test-role">RC hobi</div></div>
-  </div>
-</div>
-
-<!-- SSS MİNİ -->
-<div style="background:var(--bg2);border-top:1px solid var(--br);border-bottom:1px solid var(--br);padding:64px 48px">
-  <div style="max-width:1200px;margin:0 auto">
-    <div class="sec-c rv" style="margin-bottom:32px">
-      <div class="ey">SSS</div>
-      <h2>Sık Sorulan Sorular</h2>
-    </div>
-    <div class="faq-mini rv">
-      <div class="faq-item-mini"><div class="faq-q-mini">Tasarım dosyam yoksa ne yapabilirim?</div><div class="faq-a-mini">Sorun değil. Ne istediğini açıklaman veya fotoğraf gönderemen yeterli. Basit tasarımlarda ek ücret alınmaz.</div></div>
-      <div class="faq-item-mini"><div class="faq-q-mini">Hangi dosya formatlarını kabul ediyorsunuz?</div><div class="faq-a-mini">STL, STEP, OBJ, 3MF ve STP formatlarını kabul ediyoruz. Başka formatlarda da yardımcı olabiliriz.</div></div>
-      <div class="faq-item-mini"><div class="faq-q-mini">Teslimat süresi ne kadar?</div><div class="faq-a-mini">Stokta hazır ürünler 48 saat, özel sipariş 72 saat (3 iş günü), toptan siparişler 5-10 iş günü.</div></div>
-      <div class="faq-item-mini"><div class="faq-q-mini">Toptan satış için minimum sipariş adedi nedir?</div><div class="faq-a-mini">Toptan fiyatlandırma 10 adetten başlar. 10-49 adet %10, 50-99 adet %20, 100+ adet %30 indirim.</div></div>
-    </div>
-    <div style="text-align:center;margin-top:24px"><a href="sss.html" class="btn-lg btn-sec" style="display:inline-flex">Tüm Soruları Gör →</a></div>
-  </div>
-</div>
-
-<!-- CTA BANNER -->
-<div class="cta-banner rv">
   <div>
-    <h3>Projen mi var?</h3>
-    <p>Dosyanı yükle veya açıkla — 24 saat içinde fiyat teklifi gönderelim.</p>
+    <div class="htag">Türkiye'nin Maker Stüdyosu</div>
+    <h1>Dosyanı Yükle,<br><span>Anında Teklif Al</span></h1>
+    <p class="hsub">Araba aksesuar, elektronik kutu, RC parça ve özel tasarım. STL dosyanı yükle, 24 saat içinde teklif iletilir.</p>
+    <div class="hbtns">
+      <a href="#urunler" class="bl bp">Ürünleri İncele →</a>
+      <a href="#toptan" class="bl bs">Toptan Fiyat</a>
+    </div>
+    <div class="htrust">
+      <div class="ti"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>72 saat teslimat</div>
+      <div class="ti"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Fatura kesilir</div>
+      <div class="ti"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Ücretsiz danışmanlık</div>
+    </div>
   </div>
-  <div style="display:flex;gap:12px;flex-wrap:wrap">
-    <button class="btn-lg btn-prim" onclick="window.scrollTo({top:0,behavior:'smooth'})">Dosya Yükle →</button>
-    <a href="#iletisim" class="btn-lg btn-sec">İletişim Kur</a>
+  <div class="hright">
+    <form id="upload-form" action="https://formspree.io/f/FORMSPREE_ID_BURAYA" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="3Delta — Yeni Dosya Yükleme Talebi">
+      <div class="uz" id="drop-zone">
+        <input type="file" name="dosya" id="file-input" accept=".stl,.step,.obj,.3mf,.stp" onchange="handleFile(this)">
+        <div class="uico"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="ut">Dosyanı Buraya Bırak</div>
+        <div class="us">STL, STEP, OBJ, 3MF — max 50MB</div>
+        <div class="fn" id="file-name"></div>
+      </div>
+      <div class="fgrid">
+        <div class="fi"><input type="text" name="ad_soyad" placeholder="Ad Soyad" required></div>
+        <div class="fi"><input type="text" name="telefon" placeholder="Telefon / E-posta" required></div>
+        <div class="fi"><select name="malzeme"><option value="">Malzeme</option><option>PLA</option><option>PETG</option><option>TPU</option><option>ABS</option><option>Reçine</option><option>Bilmiyorum</option></select></div>
+        <div class="fi"><select name="renk"><option value="">Renk</option><option>Siyah</option><option>Beyaz</option><option>Gri</option><option>Kırmızı</option><option>Mavi</option><option>Turuncu</option><option>Özel</option></select></div>
+        <div class="fi"><input type="number" name="adet" placeholder="Adet" min="1" value="1"></div>
+        <div class="fi"><input type="text" name="butce" placeholder="Bütçe (opsiyonel)"></div>
+        <div class="fi"><textarea name="notlar" placeholder="Ek notlar..."></textarea></div>
+      </div>
+      <button type="submit" class="ubtn" id="upload-btn">Teklif İste — Ücretsiz →</button>
+      <div class="fnote">24 saat içinde yanıt · Tamamen ücretsiz</div>
+      <div class="smsg" id="upload-success">✓ Talebiniz alındı! 24 saat içinde dönüş yapacağız.</div>
+    </form>
   </div>
 </div>
 
-<!-- İLETİŞİM -->
-<div class="sec" id="iletisim">
-  <div class="sec-c rv">
-    <div class="ey">İletişim</div>
-    <h2>Bizimle İletişime Geç</h2>
-    <p class="sub">24 saat içinde yanıt garantisi. Toptan, özel sipariş veya sadece sormak için.</p>
+<div class="sbar">
+  <div><div class="sv">72 Saat</div><div class="sl2">Ortalama teslimat</div></div>
+  <div><div class="sv">%100</div><div class="sl2">Yerli üretim</div></div>
+  <div><div class="sv">4+ Filament</div><div class="sl2">Malzeme seçeneği</div></div>
+  <div><div class="sv">B2B</div><div class="sl2">Fatura + irsaliye</div></div>
+</div>
+
+<div class="sec" id="urunler">
+  <div class="scc rv"><div class="ey">Katalog</div><h2>Ürünler</h2><p class="sub">Stokta hazır veya özel sipariş. Her bütçeye uygun.</p></div>
+  <div class="fbar rv" id="filter-bar">
+    <button class="ff on" onclick="filterProd('all',this)">Tümü</button>
+    <button class="ff" onclick="filterProd('oto',this)">Otomotiv</button>
+    <button class="ff" onclick="filterProd('elek',this)">Elektronik</button>
+    <button class="ff" onclick="filterProd('hobi',this)">Hobi / RC</button>
+    <button class="ff" onclick="filterProd('ev',this)">Ev & Dekor</button>
+    <button class="ff" onclick="filterProd('ozel',this)">Özel</button>
   </div>
-  <div class="contact-wrap rv">
-    <div class="ci-list">
-      <div class="ci"><div class="ci-l">Instagram</div><div class="ci-v">@3deltamaker</div><div class="ci-s">DM — en hızlı yanıt</div></div>
-      <div class="ci"><div class="ci-l">E-Posta</div><div class="ci-v">info@3delta.com.tr</div><div class="ci-s">24 saat içinde yanıt</div></div>
-      <div class="ci"><div class="ci-l">Diğer Hesaplar</div><div class="ci-v">@3delta.tr · @3delta.maker · @3dmaker.design</div><div class="ci-s">TikTok & YouTube: @3deltamaker</div></div>
-      <div class="ci"><div class="ci-l">Çalışma Saatleri</div><div class="ci-v">Pzt — Cmt · 09:00 — 21:00</div><div class="ci-s">Pazar acil siparişler için DM açık</div></div>
-      <div class="ci"><div class="ci-l">Konum</div><div class="ci-v">Türkiye — Tüm illere kargo</div><div class="ci-s">Yurt dışı talep üzere</div></div>
+  <div class="pgrid rv" id="pgrid"></div>
+</div>
+
+<div class="secf rv">
+  <div class="secfi">
+    <div class="scc"><div class="ey">Nasıl Çalışır</div><h2>Sipariş Süreci</h2></div>
+    <div class="proc">
+      <div class="ps"><div class="psn">ADIM 01</div><div class="pst">Dosyayı Yükle</div><div class="psd">STL/STEP dosyanı yükle. Dosyan yoksa açıklama ve fotoğraf yeterli.</div></div>
+      <div class="ps"><div class="psn">ADIM 02</div><div class="pst">Teklif Al</div><div class="psd">24 saat içinde malzeme, renk ve fiyat teklifi iletilir. Ücretsiz.</div></div>
+      <div class="ps"><div class="psn">ADIM 03</div><div class="pst">Onay & Ödeme</div><div class="psd">Teklifi onaylarsın, %50 ön ödeme ile üretim başlar.</div></div>
+      <div class="ps"><div class="psn">ADIM 04</div><div class="pst">Teslim</div><div class="psd">Kalite kontrol → fotoğraf → onay → 72 saat içinde teslim.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="malzemeler">
+  <div class="scc rv"><div class="ey">Malzemeler</div><h2>Filament Rehberi</h2><p class="sub">Doğru malzeme seçimi kaliteyi doğrudan etkiler. Bilmiyorsan öneri yaparız.</p></div>
+  <div class="pgrid rv" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))">
+    <div class="pc" style="cursor:default"><div class="pcn">PLA</div><div class="pcd">Ev dekor, figür, prototip. Kolay baskı.</div><span class="pcc" style="background:var(--ord);color:var(--or);border-color:var(--org)">En yaygın</span></div>
+    <div class="pc" style="cursor:default"><div class="pcn">PETG</div><div class="pcd">Otomotiv, dış mekan, mekanik parça.</div><span class="pcc" style="background:var(--ord);color:var(--or);border-color:var(--org)">Çok yönlü</span></div>
+    <div class="pc" style="cursor:default"><div class="pcn">TPU</div><div class="pcd">Esnek ürünler, conta, kılıf. Rubber his.</div><span class="pcc" style="background:var(--ord);color:var(--or);border-color:var(--org)">Esnek</span></div>
+    <div class="pc" style="cursor:default"><div class="pcn">ABS</div><div class="pcd">Endüstriyel, yüksek ısı ortamı.</div><span class="pcc" style="background:var(--ord);color:var(--or);border-color:var(--org)">Dayanıklı</span></div>
+    <div class="pc" style="cursor:default"><div class="pcn">Reçine</div><div class="pcd">Yüksek detaylı figür. SLA teknoloji.</div><span class="pcc" style="background:var(--ord);color:var(--or);border-color:var(--org)">En detaylı</span></div>
+    <div class="pc" style="cursor:default;border-color:var(--org)"><div class="pcn">?</div><div class="pcd">Proje açıkla, uygun malzemeyi öneririz.</div><span class="pcc" style="background:var(--ord);color:var(--or);border-color:var(--org)">Ücretsiz danışman</span></div>
+  </div>
+</div>
+
+<div class="secf" id="toptan">
+  <div class="secfi">
+    <div class="scc rv"><div class="ey">Kurumsal</div><h2>Toptan Fiyat Listesi</h2><p class="sub">Minimum 10 adet. Fatura + irsaliye ile sevkiyat.</p></div>
+    <div class="b2bw rv">
+      <div class="tbl">
+        <div class="thd">Sipariş Adedine Göre İskonto</div>
+        <div class="trow"><div><div class="tqty">10 — 49 adet</div><div class="tlbl">Başlangıç</div></div><div style="text-align:right"><div class="tdisc">%10</div><div class="tlbl">indirim</div></div></div>
+        <div class="trow feat"><div><div class="tqty">50 — 99 adet</div><div class="tlbl">Orta ölçek</div></div><div style="text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:4px"><span class="fpill">En Popüler</span><div class="tdisc">%20</div><div class="tlbl">indirim</div></div></div>
+        <div class="trow"><div><div class="tqty">100 — 499 adet</div><div class="tlbl">Büyük hacim</div></div><div style="text-align:right"><div class="tdisc">%30</div><div class="tlbl">indirim</div></div></div>
+        <div class="trow"><div><div class="tqty">500+ adet</div><div class="tlbl">Özel anlaşma</div></div><div style="text-align:right"><div class="tdisc">%40+</div><div class="tlbl">özel fiyat</div></div></div>
+      </div>
+      <div class="b2bi">
+        <div class="ib"><div class="ibl">Hedef Müşteri</div><div class="ibv">Otomotiv · Mimarlar · Fabrikalar</div><div class="ibs">Küçük işletmeler · E-ticaret satıcıları</div></div>
+        <div class="ib"><div class="ibl">Teslimat</div><div class="ibv">5 — 10 iş günü</div><div class="ibs">500₺+ siparişlerde kargo ücretsiz</div></div>
+        <div class="ib"><div class="ibl">Ödeme</div><div class="ibv">EFT · Havale · Kredi kartı (taksit)</div><div class="ibs">%50 ön ödeme · Kalan teslimatta</div></div>
+        <div class="ib"><div class="ibl">Belgeler</div><div class="ibv">E-fatura + irsaliye</div><div class="ibs">KDV dahil/hariç seçeneği</div></div>
+        <a href="#iletisim" class="bl bp" style="justify-content:center">Toptan Teklif Al →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="icerik">
+  <div class="ciw rv">
+    <div><div class="ey">@3deltamaker</div><h2>Maker İçerik</h2><p class="sub">Üretim sürecini, teknik testleri ve maker kültürünü paylaşıyoruz.</p></div>
+    <div style="background:var(--bg2);border:1px solid var(--br);border-radius:12px;padding:18px">
+      <div style="font-size:10px;font-weight:700;color:var(--or);letter-spacing:.08em;text-transform:uppercase;margin-bottom:9px">İçerik formatları</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="font-size:13px;color:var(--tx2);display:flex;gap:7px"><span style="color:var(--or);font-weight:700">→</span>Timelapse baskı videoları</div>
+        <div style="font-size:13px;color:var(--tx2);display:flex;gap:7px"><span style="color:var(--or);font-weight:700">→</span>Filament karşılaştırma testleri</div>
+        <div style="font-size:13px;color:var(--tx2);display:flex;gap:7px"><span style="color:var(--or);font-weight:700">→</span>Arduino / ESP32 proje entegrasyonu</div>
+        <div style="font-size:13px;color:var(--tx2);display:flex;gap:7px"><span style="color:var(--or);font-weight:700">→</span>Hata analizi ve çözüm rehberleri</div>
+      </div>
+    </div>
+  </div>
+  <div class="plcards rv">
+    <div class="plc"><span class="plbdg pltt">TikTok</span><div class="plct">Timelapse & Viral</div><div class="plcd">Saatlik baskıları saniyeler içinde izle. Sıfır takipçiyle bile viral olabilir.</div></div>
+    <div class="plc"><span class="plbdg plig">Instagram</span><div class="plct">Ürün & Estetik</div><div class="plcd">Baskı finish videoları, renk kombinasyonları, portföy görselleri.</div></div>
+    <div class="plc"><span class="plbdg plyt">YouTube</span><div class="plct">Teknik Rehberler</div><div class="plcd">Filament testleri, yazıcı ayarları. Türkçe teknik içerik boşluğu büyük.</div></div>
+    <div class="plc"><span class="plbdg plal">Özel Niş</span><div class="plct">Elektronik + 3D</div><div class="plcd">Arduino + özel baskı kombinasyonu — Türkiye'de neredeyse boş bir niş.</div></div>
+  </div>
+  <div class="ctab rv">
+    <div>
+      <div style="font-family:var(--hd);font-size:17px;font-weight:700">@3deltamaker</div>
+      <div style="font-size:12px;color:var(--mu);margin-top:2px">Instagram · TikTok · YouTube · @3delta.tr · @3delta.maker</div>
+    </div>
+    <div class="slks">
+      <a href="https://instagram.com/3deltamaker" class="slk" target="_blank">Instagram</a>
+      <a href="https://tiktok.com/@3deltamaker" class="slk" target="_blank">TikTok</a>
+      <a href="https://youtube.com/@3deltamaker" class="slk" target="_blank">YouTube</a>
+    </div>
+  </div>
+</div>
+
+<div class="secf">
+  <div class="secfi">
+    <div class="scc rv"><div class="ey">Referanslar</div><h2>Müşteri Yorumları</h2></div>
+    <div class="tcg rv">
+      <div class="tcd"><div class="tcs">★★★★★</div><div class="tct">"Araba için kablo yönetici sipariş ettim. Tam ölçüde geldi, mükemmel baskı kalitesi."</div><div class="tcn">Mehmet K.</div><div class="tcr">Otomotiv meraklısı</div></div>
+      <div class="tcd"><div class="tcs">★★★★★</div><div class="tct">"Arduino projem için özel kutu istedim, STL yoktu. Açıkladım, tasarladılar, 3 günde elimdeydi."</div><div class="tcn">Emre T.</div><div class="tcr">Elektronik hobi</div></div>
+      <div class="tcd"><div class="tcs">★★★★★</div><div class="tct">"RC araba şasi parçası sipariş verdim. Orijinalinden daha sağlam, fiyat çok uygundu."</div><div class="tcn">Ali R.</div><div class="tcr">RC hobi</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="blog">
+  <div class="scc rv"><div class="ey">Rehberler</div><h2>Blog</h2><p class="sub">3D baskı teknikleri, filament rehberleri ve maker projeleri.</p></div>
+  <div class="bgg rv">
+    <a href="blog.html" class="bc"><div class="bccat">Filament</div><div class="bct">PETG mi PLA mı? Doğru Filament Rehberi</div><div class="bce">Mekanik özellikler, baskı sıcaklıkları ve gerçek maliyet karşılaştırması.</div><div class="bcm"><span class="bcr">5 dk</span><span class="bcar">→</span></div></a>
+    <a href="blog.html" class="bc"><div class="bccat">Teknik</div><div class="bct">Two Trees Blue V3 Tam Ayar Rehberi</div><div class="bce">Kalibrasyon, PID ayarı, yatak yapışması ve flow rate optimizasyonu.</div><div class="bcm"><span class="bcr">8 dk</span><span class="bcar">→</span></div></a>
+    <a href="blog.html" class="bc"><div class="bccat">Proje</div><div class="bct">Arabanız için 3D Basabileceğiniz 10 Aksesuar</div><div class="bce">Telefon tutucudan torpido düzenleyiciye en çok işe yarayan baskı fikirleri.</div><div class="bcm"><span class="bcr">4 dk</span><span class="bcar">→</span></div></a>
+  </div>
+  <div style="text-align:center;margin-top:20px"><a href="blog.html" class="bl bs">Tüm Yazılar →</a></div>
+</div>
+
+<div class="secf" id="sss">
+  <div class="secfi">
+    <div class="scc rv"><div class="ey">Yardım</div><h2>Sık Sorulan Sorular</h2></div>
+    <div class="faqg rv">
+      <div class="fmi"><div class="fmiq">Tasarım dosyam yoksa?</div><div class="fmia">Sorun değil. Ne istediğini açıklaman yeterli. Basit tasarımlarda ek ücret alınmaz.</div></div>
+      <div class="fmi"><div class="fmiq">Hangi dosya formatları kabul edilir?</div><div class="fmia">STL, STEP, OBJ, 3MF ve STP formatlarını kabul ediyoruz.</div></div>
+      <div class="fmi"><div class="fmiq">Teslimat süresi ne kadar?</div><div class="fmia">Stokta hazır 48 saat, özel sipariş 72 saat, toptan 5-10 iş günü.</div></div>
+      <div class="fmi"><div class="fmiq">Toptan minimum sipariş adedi?</div><div class="fmia">10 adetten başlar. %10 ile %40+ arası iskonto uygulanır.</div></div>
+    </div>
+    <div style="text-align:center;margin-top:18px"><a href="sss.html" class="bl bs">Tüm Sorular →</a></div>
+  </div>
+</div>
+
+<div style="padding:clamp(32px,5vw,56px) clamp(16px,4vw,48px)">
+  <div class="ctabanner rv">
+    <div><h3>Projen mi var?</h3><p>Dosyanı yükle veya açıkla — 24 saat içinde teklif gönderelim.</p></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="bl bp" onclick="window.scrollTo({top:0,behavior:'smooth'})">Dosya Yükle →</button>
+      <a href="#iletisim" class="bl bs">İletişim Kur</a>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="iletisim">
+  <div class="scc rv"><div class="ey">Teklif & Sipariş</div><h2>İletişim</h2><p class="sub">24 saat içinde yanıt garantisi.</p></div>
+  <div class="cw rv">
+    <div class="cilist">
+      <div class="ci"><div class="cil">Instagram</div><div class="civ">@3deltamaker</div><div class="cis">DM — en hızlı yanıt</div></div>
+      <div class="ci"><div class="cil">E-Posta</div><div class="civ">info@3delta.com.tr</div><div class="cis">24 saat içinde yanıt</div></div>
+      <div class="ci"><div class="cil">Diğer Hesaplar</div><div class="civ">@3delta.tr · @3delta.maker · @3dmaker.design</div><div class="cis">TikTok & YouTube: @3deltamaker</div></div>
+      <div class="ci"><div class="cil">Çalışma Saatleri</div><div class="civ">Pzt — Cmt · 09:00 — 21:00</div><div class="cis">Pazar acil için DM açık</div></div>
     </div>
     <div class="fbox">
-      <!-- Bu form da Formspree ile mail gönderir -->
-      <form id="contact-form" action="https://formspree.io/f/BURAYA_FORMSPREE_ID" method="POST">
-        <input type="hidden" name="_subject" value="3Delta - İletişim Formu">
-        <div class="fr">
-          <div class="fg"><label>Ad Soyad</label><input type="text" name="ad_soyad" placeholder="Adınız" required></div>
-          <div class="fg"><label>Telefon / E-Posta</label><input type="text" name="iletisim" placeholder="0555 000 00 00" required></div>
+      <form id="contact-form" action="https://formspree.io/f/FORMSPREE_ID_BURAYA" method="POST">
+        <input type="hidden" name="_subject" value="3Delta — İletişim Formu">
+        <div class="fgr">
+          <div class="fg2"><label>Ad Soyad</label><input type="text" name="ad_soyad" placeholder="Adınız" required></div>
+          <div class="fg2"><label>Telefon / E-Posta</label><input type="text" name="iletisim" placeholder="0555 000 00 00" required></div>
         </div>
-        <div class="fg"><label>Konu</label>
-          <select name="konu">
-            <option value="">Seçin...</option>
-            <option>Otomotiv aksesuar</option>
-            <option>Elektronik kutu / proje</option>
-            <option>RC / Hobi parça</option>
-            <option>Ev & dekor</option>
-            <option>Özel tasarım</option>
-            <option>Toptan sipariş (10+ adet)</option>
-            <option>Sponsorluk / iş birliği</option>
-          </select>
-        </div>
-        <div class="fg"><label>Mesajınız</label><textarea name="mesaj" placeholder="Proje veya ürün hakkında bilgi verin..."></textarea></div>
-        <div class="fr">
-          <div class="fg"><label>Adet</label><input type="number" name="adet" placeholder="1" min="1"></div>
-          <div class="fg"><label>Bütçe (opsiyonel)</label><input type="text" name="butce" placeholder="₺..."></div>
+        <div class="fg2"><label>Konu</label><select name="konu"><option value="">Seçin...</option><option>Otomotiv aksesuar</option><option>Elektronik kutu</option><option>RC / Hobi parça</option><option>Ev & dekor</option><option>Özel tasarım</option><option>Toptan sipariş</option><option>Sponsorluk / iş birliği</option></select></div>
+        <div class="fg2"><label>Mesaj</label><textarea name="mesaj" placeholder="Proje veya ürün hakkında bilgi verin..."></textarea></div>
+        <div class="fgr">
+          <div class="fg2"><label>Adet</label><input type="number" name="adet" placeholder="1" min="1"></div>
+          <div class="fg2"><label>Bütçe (opsiyonel)</label><input type="text" name="butce" placeholder="₺..."></div>
         </div>
         <button type="submit" class="sbtn" id="contact-btn">Mesaj Gönder →</button>
-        <div class="success-msg" id="contact-success">✓ Mesajınız alındı! En kısa sürede dönüş yapacağız.</div>
+        <div class="smsg" id="contact-success">✓ Mesajınız alındı!</div>
+        <div class="fnote2">Veya: @3deltamaker · info@3delta.com.tr</div>
       </form>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="ft">
     <div>
       <a href="index.html" class="logo">
-        <svg class="logo-mark" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#f97316"/><path d="M16 4L27 10V22L16 28L5 22V10Z" stroke="white" stroke-width="1.8" stroke-linejoin="round" fill="none"/><circle cx="16" cy="16" r="2.5" fill="white"/></svg>
-        <span class="logo-name">3<b>Δ</b>DELTA</span>
+        <svg class="lm" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="7" fill="#f97316"/>
+          <polygon points="6,24 16,19 26,24 16,29" fill="rgba(0,0,0,.12)"/>
+          <polygon points="7,19 16,14 25,19 16,24" fill="rgba(0,0,0,.28)"/>
+          <polygon points="8,13 16,9 24,13 16,18" fill="rgba(0,0,0,.42)"/>
+          <polygon points="13,9 16,7.5 19,9 16,10.5" fill="white" opacity=".9"/>
+        </svg>
+        <span class="ln">3<b>Delta</b></span>
       </a>
-      <div class="ft-tag">Türkiye'nin maker stüdyosu. Tasarım → 3D Baskı → Gerçek.</div>
+      <div class="fttag">Türkiye'nin maker stüdyosu.<br>Tasarım → 3D Baskı → Gerçek.</div>
     </div>
-    <div class="fc"><div class="fc-t">Hizmetler</div><a href="#hizmetler">Otomotiv aksesuar</a><a href="#hizmetler">Elektronik kutu</a><a href="#hizmetler">Hobi / RC parça</a><a href="#hizmetler">Ev & dekor</a><a href="#hizmetler">Özel sipariş</a></div>
-    <div class="fc"><div class="fc-t">Site</div><a href="blog.html">Blog</a><a href="hakkimizda.html">Hakkımızda</a><a href="sss.html">SSS</a><a href="#toptan">Toptan satış</a><a href="#iletisim">İletişim</a></div>
-    <div class="fc"><div class="fc-t">Sosyal</div><a href="https://instagram.com/3deltamaker" target="_blank">@3deltamaker (IG)</a><a href="https://instagram.com/3delta.tr" target="_blank">@3delta.tr (IG)</a><a href="https://tiktok.com/@3deltamaker" target="_blank">@3deltamaker (TT)</a><a href="https://youtube.com/@3deltamaker" target="_blank">@3deltamaker (YT)</a></div>
+    <div class="fc"><div class="fct">Hizmetler</div><a href="#urunler">Otomotiv aksesuar</a><a href="#urunler">Elektronik kutu</a><a href="#urunler">Hobi / RC parça</a><a href="#urunler">Ev & dekor</a><a href="#urunler">Özel sipariş</a></div>
+    <div class="fc"><div class="fct">Site</div><a href="blog.html">Blog</a><a href="hakkimizda.html">Hakkımızda</a><a href="sss.html">SSS</a><a href="#toptan">Toptan satış</a><a href="#iletisim">İletişim</a></div>
+    <div class="fc"><div class="fct">Sosyal</div><a href="https://instagram.com/3deltamaker" target="_blank">@3deltamaker (IG)</a><a href="https://instagram.com/3delta.tr" target="_blank">@3delta.tr (IG)</a><a href="https://tiktok.com/@3deltamaker" target="_blank">TikTok</a><a href="https://youtube.com/@3deltamaker" target="_blank">YouTube</a></div>
   </div>
   <div class="fb2">
     <div class="fc2">© 2025 3DELTA · 3delta.com.tr · Türkiye'de üretildi</div>
@@ -541,64 +515,84 @@ footer{background:var(--bg2);border-top:1px solid var(--br);padding:56px 48px 28
   </div>
 </footer>
 
+<script src="products.js"></script>
 <script>
-// Reveal
-const ro=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*60);ro.unobserve(e.target);}});},{threshold:.08});
-document.querySelectorAll('.rv').forEach(r=>ro.observe(r));
+const ICONS={car:`<rect x="2" y="7" width="20" height="11" rx="3"/><circle cx="6.5" cy="18.5" r="2.5"/><circle cx="17.5" cy="18.5" r="2.5"/><path d="M6 7V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2"/>`,phone:`<rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="13" y2="11"/>`,cpu:`<rect x="2" y="4" width="20" height="16" rx="2"/><rect x="6" y="8" width="12" height="8" rx="1"/>`,box:`<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/>`,wheel:`<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><line x1="3" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="21" y2="12"/>`,star:`<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>`,home:`<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>`,edit:`<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>`};
+const KATL={oto:'Otomotiv',elek:'Elektronik',hobi:'Hobi / RC',ev:'Ev & Dekor',ozel:'Özel Sipariş'};
+const ROZC={pop:'rp',new:'rn',sale:'rs',ozel:'ro'};
+const ROZT={pop:'Çok Satan',new:'Yeni',sale:'İndirim',ozel:'Özel'};
 
-// File upload handler
-function handleFile(input){
-  const fn=document.getElementById('file-name');
-  if(input.files[0]){
-    fn.textContent='✓ '+input.files[0].name;
-    fn.style.display='block';
-    document.getElementById('drop-zone').style.borderColor='var(--or)';
-    document.getElementById('drop-zone').style.background='var(--ord)';
-  }
+function renderUrunler(filter='all'){
+  const g=document.getElementById('pgrid');
+  const liste=filter==='all'?URUNLER:URUNLER.filter(u=>u.kategori===filter);
+  g.innerHTML=liste.map(u=>{
+    const fiyat=u.fiyat_max?`${u.fiyat} — ${u.fiyat_max}`:u.fiyat;
+    const roz=u.rozet&&ROZC[u.rozet]?`<span class="pcroz ${ROZC[u.rozet]}">${ROZT[u.rozet]}</span>`:'';
+    const chips=u.malzeme.map(m=>`<span class="pcc">${m}</span>`).join('');
+    const isO=u.kategori==='ozel';
+    return `<div class="pc" data-cat="${u.kategori}" style="${isO?'border:1.5px dashed var(--org)':''}" onclick="document.getElementById('iletisim').scrollIntoView({behavior:'smooth'})">
+      <div class="pctop"><div class="pcico" style="${isO?'background:rgba(139,92,246,.1)':''}"><svg viewBox="0 0 24 24" fill="none" stroke="${isO?'#7c3aed':'var(--or)'}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONS[u.icon]||ICONS.box}</svg></div>${roz}</div>
+      <div class="pctag">${KATL[u.kategori]||u.kategori}</div>
+      <div class="pcn">${u.ad}</div>
+      <div class="pcd">${u.aciklama}</div>
+      <div class="pccs">${chips}</div>
+      <div class="pcf"><span class="pcpr" style="${isO?'color:#7c3aed':''}">${fiyat}</span><span style="font-size:12px;color:var(--or);font-weight:600">Sipariş →</span></div>
+    </div>`;
+  }).join('');
 }
 
-// Drag & drop
+function filterProd(cat,btn){
+  document.querySelectorAll('.ff').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderUrunler(cat);
+}
+
+const ro=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*55);ro.unobserve(e.target);}});},{threshold:.07});
+document.querySelectorAll('.rv').forEach(r=>ro.observe(r));
+
+function toggleMob(){
+  const n=document.getElementById('mob-nav'),b=document.getElementById('hbg-btn');
+  n.classList.toggle('open');b.classList.toggle('open');
+  document.body.style.overflow=n.classList.contains('open')?'hidden':'';
+}
+function closeMob(){
+  document.getElementById('mob-nav').classList.remove('open');
+  document.getElementById('hbg-btn').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function handleFile(inp){
+  const fn=document.getElementById('file-name');
+  if(inp.files[0]){fn.textContent='✓ '+inp.files[0].name;fn.style.display='block';
+    document.getElementById('drop-zone').style.borderColor='var(--or)';
+    document.getElementById('drop-zone').style.background='var(--ord)';}
+}
 const dz=document.getElementById('drop-zone');
 ['dragenter','dragover'].forEach(e=>dz.addEventListener(e,ev=>{ev.preventDefault();dz.classList.add('drag');}));
 ['dragleave','drop'].forEach(e=>dz.addEventListener(e,ev=>{ev.preventDefault();dz.classList.remove('drag');}));
-dz.addEventListener('drop',ev=>{
-  const files=ev.dataTransfer.files;
-  if(files[0]){document.getElementById('file-input').files=files;handleFile(document.getElementById('file-input'));}
-});
+dz.addEventListener('drop',ev=>{const f=ev.dataTransfer.files;if(f[0]){document.getElementById('file-input').files=f;handleFile(document.getElementById('file-input'));}});
 
-// Upload form — Formspree AJAX
-document.getElementById('upload-form').addEventListener('submit',async function(e){
-  e.preventDefault();
-  const btn=document.getElementById('upload-btn');
+async function doForm(fid,bid,sid){
+  const form=document.getElementById(fid),btn=document.getElementById(bid),suc=document.getElementById(sid);
   btn.textContent='Gönderiliyor...';btn.disabled=true;
   try{
-    const res=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{Accept:'application/json'}});
-    if(res.ok){
-      document.getElementById('success-msg').style.display='block';
-      btn.textContent='Gönderildi ✓';btn.style.background='#16a34a';
-      this.reset();document.getElementById('file-name').style.display='none';
-    } else {btn.textContent='Hata — Tekrar dene';btn.disabled=false;}
-  } catch{btn.textContent='Hata — Tekrar dene';btn.disabled=false;}
+    const r=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    if(r.ok){suc.style.display='block';btn.textContent='Gönderildi ✓';btn.style.background='#16a34a';form.reset();const fn=document.getElementById('file-name');if(fn)fn.style.display='none';}
+    else{btn.textContent='Hata — Tekrar dene';btn.disabled=false;}
+  }catch{btn.textContent='Hata — Tekrar dene';btn.disabled=false;}
+}
+document.getElementById('upload-form').addEventListener('submit',e=>{e.preventDefault();doForm('upload-form','upload-btn','upload-success');});
+document.getElementById('contact-form').addEventListener('submit',e=>{e.preventDefault();doForm('contact-form','contact-btn','contact-success');});
+
+window.addEventListener('scroll',()=>{document.getElementById('main-nav').style.boxShadow=window.scrollY>20?'0 1px 20px rgba(0,0,0,.07)':'none';});
+
+['.htag','h1','.hsub','.hbtns','.htrust'].forEach((s,i)=>{
+  const el=document.querySelector(s);if(!el)return;
+  el.style.cssText='opacity:0;transform:translateY(16px)';
+  setTimeout(()=>{el.style.cssText='opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease';},100+i*85);
 });
 
-// Contact form
-document.getElementById('contact-form').addEventListener('submit',async function(e){
-  e.preventDefault();
-  const btn=document.getElementById('contact-btn');
-  btn.textContent='Gönderiliyor...';btn.disabled=true;
-  try{
-    const res=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{Accept:'application/json'}});
-    if(res.ok){
-      document.getElementById('contact-success').style.display='block';
-      btn.textContent='Gönderildi ✓';btn.style.background='#16a34a';this.reset();
-    } else {btn.textContent='Hata — Tekrar dene';btn.disabled=false;}
-  } catch{btn.textContent='Hata — Tekrar dene';btn.disabled=false;}
-});
-
-// Nav scroll
-window.addEventListener('scroll',()=>{
-  document.querySelector('nav').style.boxShadow=window.scrollY>20?'0 1px 20px rgba(0,0,0,0.08)':'none';
-});
+renderUrunler();
 </script>
 </body>
 </html>
